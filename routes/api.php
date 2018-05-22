@@ -28,8 +28,12 @@ Route::get('/post/{postid}/comments', function ($postid) {
 Route::get('/post/{postid}', function ($postid) {
     return App\Post::find($postid);
 });
+Route::get('/hot',function(){
 
-Route::post('/upload');
-Route::post('/post');
-Route::post('/comment');
-Route::post('/post/{postid}/vote');
+});
+
+
+Route::post('/upload', 'UploadController@doUpload');
+Route::post('/post', 'PostControler@publishPost');
+Route::post('/post/{postid}/comment', 'CommentController@publishComment');
+Route::post('/post/{postid}/vote', 'PostController@doVote');
