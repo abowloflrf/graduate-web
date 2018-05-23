@@ -14,7 +14,7 @@ class PostController extends Controller
             'place_id' => (int)$request->placeId,
             'place_detail' => $request->placeDetail,
             'content' => $request->content,
-            'cover' => "https://ws1.sinaimg.cn/mw690/6b01d453ly1frjdn150mzj23vc2kw4qr.jpg", //TODO
+            'cover' => $request->cover,
             'author_name' => $request->authorName,
             'author_school' => $request->authorSchool,
             'author_level' => date('Y', strtotime($request->authorLevel))
