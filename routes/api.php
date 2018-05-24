@@ -40,8 +40,7 @@ Route::get('/hot', function () {    //TODO
     ]);
 });
 
-Route::get('/token', 'UploadController@getToken');      //TODO
-//Route::post('/upload', 'UploadController@doUpload');    //TODO
+Route::get('/token', 'UploadController@getToken');      
 Route::post('/post', 'PostController@publishPost');
-Route::post('/post/{postid}/comment', 'CommentController@publishComment');  //TODO
+Route::post('/post/{postid}/comment', 'CommentController@publishComment');
 Route::post('/post/{postid}/vote', 'PostController@doVote');    //TODO
