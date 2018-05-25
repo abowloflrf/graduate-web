@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Post;
 
 class PostController extends Controller
@@ -31,6 +32,19 @@ class PostController extends Controller
             'msg' => "发布成功",
             "post" => $newPost
         );
-        //echo $request->authorLevel;
+    }
+
+    public function doVote(Request $request, $postid)
+    {
+        if (Post::find($postid)->increment('votes')) {
+            return response(array(
+                'status' => 1,
+                'msg' => '点赞成功'
+            ))->cookie('voted_' . $postid, 1, 1440);
+        }
+        return array(
+            'status' => 0,
+            'msg' => '点赞失败'
+        );
     }
 }
