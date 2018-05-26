@@ -40,7 +40,7 @@ class PostController extends Controller
             return response(array(
                 'status' => 1,
                 'msg' => '点赞成功'
-            ))->cookie('voted_' . $postid, 1, 1440);
+            ));
         }
         return array(
             'status' => 0,

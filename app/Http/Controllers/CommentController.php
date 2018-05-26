@@ -23,10 +23,12 @@ class CommentController extends Controller
                 'msg' => "留言失败"
             );
         }
-        return array(
+        return response(array(
             'status' => 1,
             'msg' => "留言成功",
             "post" => $newComment
-        );
+        ))->cookie('author_name', $request->authorName)
+            ->cookie('author_school', $request->authorSchool)
+            ->cookie('author_level', date('Y', strtotime($request->authorLevel)));
     }
 }

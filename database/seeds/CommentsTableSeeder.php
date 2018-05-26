@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Post;
+use App\Comment;
 
 class CommentsTableSeeder extends Seeder
 {

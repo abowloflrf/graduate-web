@@ -13,7 +13,8 @@ class Post extends Model
         "cover",
         "author_name",
         "author_school",
-        "author_level"
+        "author_level",
+        "votes"
     ];  
 
     public function comments()
