@@ -28,19 +28,9 @@ Route::get('/post/{postid}/comments', function ($postid) {
 Route::get('/post/{postid}', function ($postid) {
     return App\Post::find($postid);
 });
-Route::get('/hot', function () {    //TODO
-    return array([
-        "place_id" => 1,
-        "place_detail" => "九斋536",
-        "content" => "热门的计算部分还没有完成",
-        "cover" => "https://ws1.sinaimg.cn/mw690/6b01d453ly1frjdk4r1t5j23vj2kskjm.jpg",
-        "author_name" => "路肉饭",
-        "author_school" => "计通",
-        "author_level" => "2015"
-    ]);
-});
 
-Route::get('/token', 'UploadController@getToken');      
+Route::get('/hot', 'HotController@getHot');
+Route::get('/token', 'UploadController@getToken');
 Route::post('/post', 'PostController@publishPost');
 Route::post('/post/{postid}/comment', 'CommentController@publishComment');
-Route::post('/post/{postid}/vote', 'PostController@doVote');    //TODO
+Route::post('/post/{postid}/vote', 'PostController@doVote');
