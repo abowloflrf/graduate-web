@@ -40,18 +40,21 @@ class Rank extends Command
      *
      * @return mixed
      */
+    //执行命令
     public function handle()
     {
+    //清空Redis
         Redis::flushdb();
         $calculateArr = [];
         $posts = Post::all();
         foreach ($posts as $post) {
             Redis::zadd('rank', $this->getHotValue($post), $post['id']);
         }
-        $ret = Redis::zrevrange('rank', 0, 5);
+        $ret = Redis::zrevrange('rank', 0, 10);
         var_dump($ret);
     }
 
+    //计算热度值
     private function getHotValue(Post $post) : int
     {
         $commentCount = count($post->comments);
