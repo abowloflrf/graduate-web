@@ -10,7 +10,7 @@ class HotController extends Controller
 {
     public function getHot()
     {
-        $rankList = Redis::zrevrange('rank', 0, 4);
+        $rankList = Redis::zrevrange('rank', 0, 9);
         $rankedPosts = [];
         foreach ($rankList as $rank) {
             array_push($rankedPosts, Post::find($rank));
